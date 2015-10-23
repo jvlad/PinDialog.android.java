@@ -1,11 +1,11 @@
 #PinDialog
-Dialog for entering vary-length digital pin code. Android, API 8 compatible
+Dialog for entering vary-length digital pin code. Android, API 8 compatible.
 
 ##Attention Message
-Project is under development. There is no running parts.
+Project is under development. There are no any running parts.
 
 ##Development Plan
-1. make number of digits configurable.
+1. make number of digits configurable
 
 1. add methods for [pin code creation] workflow
 
