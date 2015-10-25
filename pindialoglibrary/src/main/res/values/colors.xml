@@ -5,4 +5,6 @@
     <color name="colorAccent">#FF4081</color>
     <color name="pin_dialog_background">#343434</color>
     <color name="pin_dialog_title_color">#fff</color>
+    <color name="pin_pad_button_stroke">#FF7E00</color>
+    <color name="pin_pad_pressed_button_dimming">#3fff</color>
 </resources>

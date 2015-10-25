@@ -12,6 +12,7 @@ import android.widget.Toast;
 import cf.zvlad.pidialoglibrary.R;
 
 public class PinDialog extends Dialog {
+    //todo move pinPad behavior to separate class 'DecimalPinPad'
     public final char PIN_PAD_DIGIT_VALUE_1 = '1';
     public final char PIN_PAD_DIGIT_VALUE_2 = '2';
     public final char PIN_PAD_DIGIT_VALUE_3 = '3';
@@ -25,7 +26,7 @@ public class PinDialog extends Dialog {
 
 
     public PinDialog(Context context, int pinLength) {
-        super(context, R.style.Theme_AppCompat_DialogWhenLarge);
+        super(context, R.style.pin_dialog);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.pindialog);
         attachListenerToPinPadDigits(new View.OnClickListener() {
@@ -126,16 +127,16 @@ public class PinDialog extends Dialog {
 //    }
 
     private ArrayList<Button> getPinPadDigitButtons() {
-        ArrayList<Button> l = new ArrayList<>();
-        l.add((Button) findViewById(R.id.pin_pad_digit_1));
-        l.add((Button) findViewById(R.id.pin_pad_digit_2));
-        l.add((Button) findViewById(R.id.pin_pad_digit_3));
-        l.add((Button) findViewById(R.id.pin_pad_digit_4));
-        l.add((Button) findViewById(R.id.pin_pad_digit_5));
-        l.add((Button) findViewById(R.id.pin_pad_digit_6));
-        l.add((Button) findViewById(R.id.pin_pad_digit_7));
-        l.add((Button) findViewById(R.id.pin_pad_digit_9));
-        l.add((Button) findViewById(R.id.pin_pad_digit_0));
-        return l;
+        ArrayList<Button> buttons = new ArrayList<>();
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_1));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_2));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_3));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_4));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_5));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_6));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_7));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_9));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_0));
+        return buttons;
     }
 }

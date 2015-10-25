@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/pin_pad_button_background"/>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/pin_pad_pressed_button_dimming"/>
+        </shape>
+    </item>
+</layer-list>
