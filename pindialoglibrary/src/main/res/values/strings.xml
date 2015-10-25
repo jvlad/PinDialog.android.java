@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">PinDialogLibrary</string>
     <string name="pin_dialog_title">Введите пин-код</string>
-    <string name="pin_input_indicator_description">Pin input indicator</string>
+    <string name="pin_input_filled_indicator_description">Индикатор введенного символа</string>
     <string name="pin_pad_digit_1">1</string>
     <string name="pin_pad_digit_2">2</string>
     <string name="pin_pad_digit_3">3</string>

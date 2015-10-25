@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="15dp"
+             android:layout_height="15dp"
+             android:layout_marginLeft="5dp"
+             android:layout_marginRight="5dp"
+             android:background="@drawable/pin_input_progress_indicator">
+
+    <ImageView
+        android:id="@+id/indicator_filling"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:layout_gravity="center"
+        android:contentDescription="@string/pin_input_filled_indicator_description"
+        android:src="@drawable/pin_input_progress_indicator_filling"
+        android:visibility="gone"/>
+</FrameLayout>

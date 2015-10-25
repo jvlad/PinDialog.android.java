@@ -24,13 +24,7 @@
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/pin_pad_title"
-        android:orientation="horizontal">
-
-        <ImageView
-            style="@style/input_indicator"
-            android:contentDescription="@string/pin_input_indicator_description"/>
-    </LinearLayout>
-
+        android:orientation="horizontal"/>
 
     <Button
         android:id="@+id/pin_pad_digit_1"

@@ -90,13 +90,13 @@ public class PinDialog extends Dialog {
 //    private void doValidation() {
 //        count++;
 //        if (count == 1) {
-//            smallcircle_1.setBackgroundResource(R.drawable.small_circle_filled);
+//            smallcircle_1.setBackgroundResource(R.drawable.pin_input_progress_indicator_filling);
 //        } else if (count == 2) {
-//            smallcircle_2.setBackgroundResource(R.drawable.small_circle_filled);
+//            smallcircle_2.setBackgroundResource(R.drawable.pin_input_progress_indicator_filling);
 //        } else if (count == 3) {
-//            smallcircle_3.setBackgroundResource(R.drawable.small_circle_filled);
+//            smallcircle_3.setBackgroundResource(R.drawable.pin_input_progress_indicator_filling);
 //        } else if (count == 4) {
-//            smallcircle_4.setBackgroundResource(R.drawable.small_circle_filled);
+//            smallcircle_4.setBackgroundResource(R.drawable.pin_input_progress_indicator_filling);
 //            new Handler().postDelayed(new Runnable() {
 //
 //                @Override
@@ -113,13 +113,13 @@ public class PinDialog extends Dialog {
 //                    count = 0;
 //                    mBuilder = new StringBuilder();
 //                    smallcircle_1
-//                            .setBackgroundResource(R.drawable.small_circle);
+//                            .setBackgroundResource(R.drawable.pin_input_progress_indicator);
 //                    smallcircle_2
-//                            .setBackgroundResource(R.drawable.small_circle);
+//                            .setBackgroundResource(R.drawable.pin_input_progress_indicator);
 //                    smallcircle_3
-//                            .setBackgroundResource(R.drawable.small_circle);
+//                            .setBackgroundResource(R.drawable.pin_input_progress_indicator);
 //                    smallcircle_4
-//                            .setBackgroundResource(R.drawable.small_circle);
+//                            .setBackgroundResource(R.drawable.pin_input_progress_indicator);
 //                }
 //
 //            }, 250);

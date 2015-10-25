@@ -180,13 +180,5 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="input_indicator">
-        <item name="android:layout_width">15dp</item>
-        <item name="android:layout_height">15dp</item>
-        <item name="android:layout_marginRight">5dp</item>
-        <item name="android:layout_marginLeft">5dp</item>
-        <item name="android:src">@drawable/small_circle</item>
-    </style>
-
     <color name="pin_pad_button_foreground">#fff</color>
 </resources>
