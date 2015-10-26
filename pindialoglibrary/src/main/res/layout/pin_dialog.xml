@@ -130,12 +130,4 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/pin_pad_digit_0"/>
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/transparent">
-        <!--This layout is for lower API compatibility-->
-        <!--It must be on top layer-->
-    </FrameLayout>
 </RelativeLayout>

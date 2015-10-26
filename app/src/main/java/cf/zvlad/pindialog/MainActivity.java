@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import cf.zvlad.pindialoglibrary.OnPinEnteredListener;
-import cf.zvlad.pindialoglibrary.PinDialog;
+import cf.zvlad.pindialoglibrary.DecimalPinDialog;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,14 +14,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toast.makeText(this, "Hello!", Toast.LENGTH_LONG).show();
         OnPinEnteredListener onPinEnteredListener = new OnPinEnteredListener() {
             @Override
-            public void onPinEntered(String pin) {
-                showShortToastWithText(pin);
-            }
+            public void onPinEntered(String pin) {showShortToastWithText(pin);}
         };
-        Dialog d = new PinDialog(this, 5, onPinEnteredListener);
+        Dialog d = new DecimalPinDialog(this, 3, onPinEnteredListener);
         d.show();
     }
 

@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "cf.zvlad.pindialog"
+        applicationId "cf.zvlad.pin_dialog"
         minSdkVersion 8
         targetSdkVersion 23
         versionCode 1

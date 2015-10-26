@@ -9,22 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
 import cf.zvlad.pidialoglibrary.R;
 
-public class PinDialog extends Dialog {
-    //todo move pinPad behavior to separate class 'DecimalPinPad'
-    public final char PIN_PAD_DIGIT_VALUE_1 = '1';
-    public final char PIN_PAD_DIGIT_VALUE_2 = '2';
-    public final char PIN_PAD_DIGIT_VALUE_3 = '3';
-    public final char PIN_PAD_DIGIT_VALUE_4 = '4';
-    public final char PIN_PAD_DIGIT_VALUE_5 = '5';
-    public final char PIN_PAD_DIGIT_VALUE_6 = '6';
-    public final char PIN_PAD_DIGIT_VALUE_7 = '7';
-    public final char PIN_PAD_DIGIT_VALUE_8 = '8';
-    public final char PIN_PAD_DIGIT_VALUE_9 = '9';
-    public final char PIN_PAD_DIGIT_VALUE_0 = '0';
+public class DecimalPinDialog extends Dialog {
+    public final DecimalCharactersValues decimalCharactersValues = new DecimalCharactersValues();
     private final int pinLength;
     InputIndicatorsBar indicatorsBar;
     ViewGroup inputIndicatorsContainer;
@@ -33,10 +22,10 @@ public class PinDialog extends Dialog {
     OnPinEnteredListener onPinEnteredListener;
 
 
-    public PinDialog(Context context, int pinLength, OnPinEnteredListener onPinEnteredListener) {
+    public DecimalPinDialog(Context context, int pinLength, OnPinEnteredListener onPinEnteredListener) {
         super(context, R.style.pin_dialog);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.setContentView(R.layout.pindialog);
+        this.setContentView(R.layout.pin_dialog);
         this.pinLength = pinLength;
         this.onPinEnteredListener = onPinEnteredListener;
         enteredSymbols = new StringBuilder();
@@ -69,34 +58,34 @@ public class PinDialog extends Dialog {
     private void pinSymbolOnClick(View v) {
         int i = v.getId();
         if (i == R.id.pin_pad_digit_1) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_1);
+            pinPadSymbolClicked(decimalCharactersValues._1);
 
         } else if (i == R.id.pin_pad_digit_2) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_2);
+            pinPadSymbolClicked(decimalCharactersValues._2);
 
         } else if (i == R.id.pin_pad_digit_3) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_3);
+            pinPadSymbolClicked(decimalCharactersValues._3);
 
         } else if (i == R.id.pin_pad_digit_4) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_4);
+            pinPadSymbolClicked(decimalCharactersValues._4);
 
         } else if (i == R.id.pin_pad_digit_5) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_5);
+            pinPadSymbolClicked(decimalCharactersValues._5);
 
         } else if (i == R.id.pin_pad_digit_6) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_6);
+            pinPadSymbolClicked(decimalCharactersValues._6);
 
         } else if (i == R.id.pin_pad_digit_7) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_7);
+            pinPadSymbolClicked(decimalCharactersValues._7);
 
         } else if (i == R.id.pin_pad_digit_8) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_8);
+            pinPadSymbolClicked(decimalCharactersValues._8);
 
         } else if (i == R.id.pin_pad_digit_9) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_9);
+            pinPadSymbolClicked(decimalCharactersValues._9);
 
         } else if (i == R.id.pin_pad_digit_0) {
-            pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_0);
+            pinPadSymbolClicked(decimalCharactersValues._0);
         }
     }
 
