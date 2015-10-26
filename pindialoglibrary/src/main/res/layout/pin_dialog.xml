@@ -130,4 +130,15 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/pin_pad_digit_0"/>
+
+    <Button
+        android:id="@+id/backspace"
+        android:layout_alignLeft="@id/pin_pad_digit_3"
+        android:layout_alignStart="@id/pin_pad_digit_3"
+        android:layout_below="@id/pin_pad_digit_7"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_height="@dimen/big_btn_size"
+        android:layout_width="@dimen/big_btn_size"
+        android:background="@drawable/pin_pad_backspace_button"/>
 </RelativeLayout>
