@@ -1,10 +1,12 @@
 package cf.zvlad.pindialoglibrary;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
@@ -23,28 +25,48 @@ public class PinDialog extends Dialog {
     public final char PIN_PAD_DIGIT_VALUE_8 = '8';
     public final char PIN_PAD_DIGIT_VALUE_9 = '9';
     public final char PIN_PAD_DIGIT_VALUE_0 = '0';
+    private final int pinLength;
+    InputIndicatorsBar indicatorsBar;
+    ViewGroup inputIndicatorsContainer;
+    int enteredCharactersNumber;
+    StringBuilder enteredSymbols;
+    OnPinEnteredListener onPinEnteredListener;
 
 
-    public PinDialog(Context context, int pinLength) {
+    public PinDialog(Context context, int pinLength, OnPinEnteredListener onPinEnteredListener) {
         super(context, R.style.pin_dialog);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.pindialog);
-        attachListenerToPinPadDigits(new View.OnClickListener() {
+        this.pinLength = pinLength;
+        this.onPinEnteredListener = onPinEnteredListener;
+        enteredSymbols = new StringBuilder();
+        attachListenerToPinPadSymbols(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pinPadDigitOnClick(v);
+                pinSymbolOnClick(v);
             }
         });
+        inputIndicatorsContainer = (ViewGroup) findViewById(R.id.input_indicators_container);
+        indicatorsBar = new InputIndicatorsBar(context, inputIndicatorsContainer, this.pinLength);
+        displayIndicatorBar();
+        enteredCharactersNumber = 0;
     }
 
-    private void attachListenerToPinPadDigits(View.OnClickListener listener) {
+    private void displayIndicatorBar() {
+        Iterator<View> viewsIterator = indicatorsBar.getViewsIterator();
+        while (viewsIterator.hasNext()) {
+            inputIndicatorsContainer.addView(viewsIterator.next());
+        }
+    }
+
+    private void attachListenerToPinPadSymbols(View.OnClickListener listener) {
         ArrayList<Button> pinPadDigitButtons = getPinPadDigitButtons();
         for (int i = 0; i < pinPadDigitButtons.size(); i++) {
             pinPadDigitButtons.get(i).setOnClickListener(listener);
         }
     }
 
-    private void pinPadDigitOnClick(View v) {
+    private void pinSymbolOnClick(View v) {
         int i = v.getId();
         if (i == R.id.pin_pad_digit_1) {
             pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_1);
@@ -67,7 +89,7 @@ public class PinDialog extends Dialog {
         } else if (i == R.id.pin_pad_digit_7) {
             pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_7);
 
-        } else if (i == R.id.pin_pad_digit_9) {
+        } else if (i == R.id.pin_pad_digit_8) {
             pinPadSymbolClicked(PIN_PAD_DIGIT_VALUE_8);
 
         } else if (i == R.id.pin_pad_digit_9) {
@@ -79,52 +101,13 @@ public class PinDialog extends Dialog {
     }
 
     private void pinPadSymbolClicked(char pinChar) {
-        showShortToastWithText(pinChar + " is pressed");
+        enteredCharactersNumber++;
+        enteredSymbols.append(pinChar);
+        indicatorsBar.fillNext();
+        if (enteredCharactersNumber == pinLength){
+            onPinEnteredListener.onPinEntered(enteredSymbols.toString());
+        }
     }
-
-    //todo remove. This is a test method.
-    private void showShortToastWithText(String text) {
-        Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
-    }
-
-//    private void doValidation() {
-//        count++;
-//        if (count == 1) {
-//            smallcircle_1.setBackgroundResource(R.drawable.pin_input_progress_indicator_filling);
-//        } else if (count == 2) {
-//            smallcircle_2.setBackgroundResource(R.drawable.pin_input_progress_indicator_filling);
-//        } else if (count == 3) {
-//            smallcircle_3.setBackgroundResource(R.drawable.pin_input_progress_indicator_filling);
-//        } else if (count == 4) {
-//            smallcircle_4.setBackgroundResource(R.drawable.pin_input_progress_indicator_filling);
-//            new Handler().postDelayed(new Runnable() {
-//
-//                @Override
-//                public void run() {
-//                    Log.d("pin", mBuilder.toString() + ":" + pin);
-//                    if (mBuilder.toString().equals(pin)) {
-//                        Toast.makeText(context, OnPinMatchMessage,
-//                                              Toast.LENGTH_SHORT).show();
-//                        PinDialog.this.dismiss();
-//                    } else {
-//                        Toast.makeText(context, onPinMismatchedMessage,
-//                                              Toast.LENGTH_SHORT).show();
-//                    }
-//                    count = 0;
-//                    mBuilder = new StringBuilder();
-//                    smallcircle_1
-//                            .setBackgroundResource(R.drawable.pin_input_progress_indicator);
-//                    smallcircle_2
-//                            .setBackgroundResource(R.drawable.pin_input_progress_indicator);
-//                    smallcircle_3
-//                            .setBackgroundResource(R.drawable.pin_input_progress_indicator);
-//                    smallcircle_4
-//                            .setBackgroundResource(R.drawable.pin_input_progress_indicator);
-//                }
-//
-//            }, 250);
-//        }
-//    }
 
     private ArrayList<Button> getPinPadDigitButtons() {
         ArrayList<Button> buttons = new ArrayList<>();
@@ -135,6 +118,7 @@ public class PinDialog extends Dialog {
         buttons.add((Button) findViewById(R.id.pin_pad_digit_5));
         buttons.add((Button) findViewById(R.id.pin_pad_digit_6));
         buttons.add((Button) findViewById(R.id.pin_pad_digit_7));
+        buttons.add((Button) findViewById(R.id.pin_pad_digit_8));
         buttons.add((Button) findViewById(R.id.pin_pad_digit_9));
         buttons.add((Button) findViewById(R.id.pin_pad_digit_0));
         return buttons;
