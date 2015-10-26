@@ -1016,19 +1016,44 @@ body .markdown-body
 }
 </style><title>README</title></head><body><article class="markdown-body"><h1 id="pindialog"><a name="user-content-pindialog" href="#pindialog" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>PinDialog</h1>
 <p>Dialog for entering vary-length digital pin code. Android, API 8 compatible.</p>
+<div style="position:fixed; bottom: 10px; right: 20px;"><p class="align-right toc-link" style="text-align: right; margin-top: -5px; font-size: 10pt; font-weight: bold"><a href="#table-of-contents">Table of Contents</a></p></div>
+
+<h6 id="table-of-contents"><em>Table of Contents</em>:</h6>
+<div class="toc">
+<ul>
+<li><a href="#pindialog">PinDialog</a><ul>
+<li><a href="#table-of-contents">Table of Contents:</a></li>
+<li><a href="#attention-message">Attention Message</a></li>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#development-plan">Development Plan</a></li>
+<li><a href="#origin">Origin</a></li>
+<li><a href="#licence">Licence</a></li>
+</ul>
+</li>
+</ul>
+</div>
 <h2 id="attention-message"><a name="user-content-attention-message" href="#attention-message" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Attention Message</h2>
-<p>Project is under development. There are no any running parts.</p>
+<p>There is no any pin-protection mechanism. If you need it look at <a href="https://github.com/OrangeGangsters/LolliPin">https://github.com/OrangeGangsters/LolliPin</a>.</p>
+<h2 id="usage"><a name="user-content-usage" href="#usage" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Usage</h2>
+<p><pre><code>...
+        //callback to specify action to do with pin-code entered by user
+        OnPinEnteredListener onPinEnteredListener = new OnPinEnteredListener() {
+            @Override
+            public void onPinEntered(String pin) {showShortToastWithText(pin);}
+        };
+
+        //instantiating and showing full-screen dialog with pin-pad
+        Dialog d = new DecimalPinDialog(this, 3, onPinEnteredListener);
+        d.show();
+    }
+
+    private void showShortToastWithText(String text) {
+        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    }
+</code></pre><br />
+Look at the sources to know more.</p>
 <h2 id="development-plan"><a name="user-content-development-plan" href="#development-plan" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Development Plan</h2>
 <ol>
-<li>
-<p>make number of digits configurable</p>
-</li>
-<li>
-<p>add methods for [pin code creation] workflow</p>
-</li>
-<li>
-<p>change buttons drawables used for the pressed state</p>
-</li>
 <li>
 <p>add &lsquo;Backspace&rsquo; button to bottom-right corner</p>
 </li>
@@ -1036,7 +1061,7 @@ body .markdown-body
 <p>add &lsquo;Clear all&rsquo; button  to bottom-left corner</p>
 </li>
 <li>
-<p>optimize layout</p>
+<p>add Dialog wrapper with methods for [pin code creation, pin checking, pin changing] workflows</p>
 </li>
 </ol>
 <h2 id="origin"><a name="user-content-origin" href="#origin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Origin</h2>
