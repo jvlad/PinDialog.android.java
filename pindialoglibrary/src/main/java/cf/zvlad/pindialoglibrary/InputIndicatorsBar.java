@@ -36,13 +36,15 @@ public class InputIndicatorsBar {
         }
     }
 
-    public void unfillLastFilled(){
+    public void clearLastFilled(){
+        //todo check lastFilled for null
         lastFilled.setFilled(false);
         int lastFilledIndex = indicators.indexOf(lastFilled);
         lastFilled = indicators.get(lastFilledIndex - 1);
     }
 
-    public void unfillAll(){
+    public void clearAll(){
+        //todo check lastFilled for null
         for (int i = 0; i < indicators.size(); i++) {
             InputIndicator indicator = indicators.get(i);
             indicator.setFilled(false);

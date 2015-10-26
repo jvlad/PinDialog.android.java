@@ -12,4 +12,5 @@
     <string name="pin_pad_digit_8">8</string>
     <string name="pin_pad_digit_9">9</string>
     <string name="pin_pad_digit_0">0</string>
+    <string name="clear_all_button_text">Сброс</string>
 </resources>
