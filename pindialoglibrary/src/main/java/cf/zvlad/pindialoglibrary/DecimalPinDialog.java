@@ -2,7 +2,6 @@ package cf.zvlad.pindialoglibrary;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -19,7 +18,6 @@ public class DecimalPinDialog extends Dialog {
     ViewGroup inputIndicatorsContainer;
     PinCode enteredCharacters;
     OnPinEnteredListener onPinEnteredListener;
-
 
     public DecimalPinDialog(Context context, int pinLength, OnPinEnteredListener onPinEnteredListener) {
         super(context, R.style.pin_dialog);
@@ -53,10 +51,10 @@ public class DecimalPinDialog extends Dialog {
             indicatorsBar.clearLastFilled();
 
         } else if (i == R.id.clear_all) {
-            enteredCharacters.clearAllEnteredCharacters();
+            enteredCharacters.clearAll();
+            indicatorsBar.clearAll();
         }
     }
-
 
     private void displayIndicatorBar() {
         Iterator<View> viewsIterator = indicatorsBar.getViewsIterator();

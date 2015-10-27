@@ -37,14 +37,26 @@ public class InputIndicatorsBar {
     }
 
     public void clearLastFilled(){
-        //todo check lastFilled for null
+        if (lastFilled == null){
+            return;
+        }
         lastFilled.setFilled(false);
+        moveLastFilledToPrevious();
+    }
+
+    private void moveLastFilledToPrevious() {
         int lastFilledIndex = indicators.indexOf(lastFilled);
-        lastFilled = indicators.get(lastFilledIndex - 1);
+        if (lastFilledIndex == 0){
+            lastFilled = null;
+        } else {
+            lastFilled = indicators.get(lastFilledIndex - 1);
+        }
     }
 
     public void clearAll(){
-        //todo check lastFilled for null
+        if (lastFilled == null){
+            return;
+        }
         for (int i = 0; i < indicators.size(); i++) {
             InputIndicator indicator = indicators.get(i);
             indicator.setFilled(false);
@@ -53,9 +65,9 @@ public class InputIndicatorsBar {
     }
 
     private void fillFirst() {
-        InputIndicator first = getFirstIndicator();
-        first.setFilled(true);
-        lastFilled = first;
+        InputIndicator indicator = getFirstIndicator();
+        indicator.setFilled(true);
+        lastFilled = indicator;
     }
 
     private void fillAfterLastFilled() {

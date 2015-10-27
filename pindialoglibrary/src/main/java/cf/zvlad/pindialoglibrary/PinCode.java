@@ -8,9 +8,11 @@ import java.util.List;
  */
 public class PinCode {
     List<Character> enteredCharacters;
+    StringBuilder pin;
 
-    public PinCode(InputIndicatorsBar indicatorsBar) {
+    public PinCode() {
         enteredCharacters = new ArrayList<>();
+        pin = new StringBuilder();
     }
 
     public void add(Character character){
@@ -21,11 +23,24 @@ public class PinCode {
         return enteredCharacters.size();
     }
 
-    public void clearAllEnteredCharacters() {
+    public void clearAll() {
         if (enteredCharacters.isEmpty()){
             return;
         }
         enteredCharacters.clear();
+    }
+
+    @Override
+    public String toString() {
+        resetPin();
+        for (int i = 0; i < enteredCharacters.size(); i++) {
+            pin.append(enteredCharacters.get(i));
+        }
+        return pin.toString();
+    }
+
+    private void resetPin() {
+        pin.delete(0, pin.length());
     }
 
     public void clearLastEnteredCharacter() {
