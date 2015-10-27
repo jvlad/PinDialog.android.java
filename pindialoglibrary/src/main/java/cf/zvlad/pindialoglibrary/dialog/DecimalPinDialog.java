@@ -1,4 +1,4 @@
-package cf.zvlad.pindialoglibrary;
+package cf.zvlad.pindialoglibrary.dialog;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,8 +8,12 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.TextView;
 
 import cf.zvlad.pidialoglibrary.R;
+import cf.zvlad.pindialoglibrary.DecimalCharactersValues;
+import cf.zvlad.pindialoglibrary.PinCode;
+import cf.zvlad.pindialoglibrary.dialog.indicators.InputIndicatorsBar;
 
 public class DecimalPinDialog extends Dialog {
     private final DecimalCharactersValues decimalCharactersValues = new DecimalCharactersValues();
@@ -17,16 +21,18 @@ public class DecimalPinDialog extends Dialog {
     InputIndicatorsBar indicatorsBar;
     ViewGroup inputIndicatorsContainer;
     PinCode enteredCharacters;
-    OnPinEnteredListener onPinEnteredListener;
+    OnPinCodeEnteredListener onPinCodeEnteredListener;
+    TextView titleView;
+    TextView subtitleView;
 
-    public DecimalPinDialog(Context context, int pinLength, OnPinEnteredListener onPinEnteredListener) {
+    public DecimalPinDialog(Context context, int pinLength) {
         super(context, R.style.pin_dialog);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.pin_dialog);
         this.pinLength = pinLength;
-
-        this.onPinEnteredListener = onPinEnteredListener;
         enteredCharacters = new PinCode();
+        titleView = (TextView) findViewById(R.id.operation_title);
+        subtitleView = (TextView) findViewById(R.id.description);
         attachListenerToPinCharacters(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -42,6 +48,20 @@ public class DecimalPinDialog extends Dialog {
         inputIndicatorsContainer = (ViewGroup) findViewById(R.id.input_indicators_container);
         indicatorsBar = new InputIndicatorsBar(context, inputIndicatorsContainer, this.pinLength);
         displayIndicatorBar();
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        super.setTitle(title);
+        titleView.setText(title);
+    }
+
+    public void setSubtitle(CharSequence subtitle) {
+        subtitleView.setText(subtitle);
+    }
+
+    public void setOnPinCodeEnteredListener(OnPinCodeEnteredListener onPinCodeEnteredListener) {
+        this.onPinCodeEnteredListener = onPinCodeEnteredListener;
     }
 
     private void editActionsOnClick(View v) {
@@ -114,8 +134,8 @@ public class DecimalPinDialog extends Dialog {
     private void pinPadCharacterClicked(char pinChar) {
         enteredCharacters.add(pinChar);
         indicatorsBar.fillNext();
-        if (enteredCharacters.size() == pinLength) {
-            onPinEnteredListener.onPinEntered(enteredCharacters.toString());
+        if (enteredCharacters.size() == pinLength && onPinCodeEnteredListener != null) {
+            onPinCodeEnteredListener.pinCodeEntered(this, enteredCharacters);
         }
     }
 

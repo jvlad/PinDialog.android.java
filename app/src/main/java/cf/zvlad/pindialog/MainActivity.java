@@ -1,12 +1,11 @@
 package cf.zvlad.pindialog;
 
-import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import cf.zvlad.pindialoglibrary.OnPinEnteredListener;
-import cf.zvlad.pindialoglibrary.DecimalPinDialog;
+import cf.zvlad.pindialoglibrary.OnPinWorkflowEndListener;
+import cf.zvlad.pindialoglibrary.PinWorkflow;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,15 +13,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        OnPinEnteredListener onPinEnteredListener = new OnPinEnteredListener() {
+        PinWorkflow pinTest = new PinWorkflow(this, 5, new OnPinWorkflowEndListener() {
             @Override
-            public void onPinEntered(String pin) {showShortToastWithText(pin);}
-        };
-        Dialog d = new DecimalPinDialog(this, 3, onPinEnteredListener);
-        d.show();
+            public void pinWorkflowEnded(boolean success, String pinCode) {
+                finishPinWorkflow(success, pinCode);
+            }
+        });
+        pinTest.startPinCreation();
     }
 
-    private void showShortToastWithText(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    private void finishPinWorkflow(boolean success, String pinCode) {
+        if (success){
+            Toast.makeText(this, "Good job: " + pinCode, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Sorry", Toast.LENGTH_SHORT).show();
+        }
     }
+
+
 }

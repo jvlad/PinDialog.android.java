@@ -1,4 +1,4 @@
-package cf.zvlad.pindialoglibrary;
+package cf.zvlad.pindialoglibrary.dialog.indicators;
 
 import android.content.Context;
 import android.view.View;

@@ -8,13 +8,13 @@ There is no any pin-protection mechanism. If you need it look at https://github.
 ```
 ...
         //callback to specify action to do with pin-code entered by user
-        OnPinEnteredListener onPinEnteredListener = new OnPinEnteredListener() {
+        OnPinEnteredListener onPinCodeEnteredListener = new OnPinEnteredListener() {
             @Override
             public void onPinEntered(String pin) {showShortToastWithText(pin);}
         };
 
         //instantiating and showing full-screen dialog with pin-pad
-        Dialog d = new DecimalPinDialog(this, 3, onPinEnteredListener);
+        Dialog d = new DecimalPinDialog(this, 3, onPinCodeEnteredListener);
         d.show();
     }
 

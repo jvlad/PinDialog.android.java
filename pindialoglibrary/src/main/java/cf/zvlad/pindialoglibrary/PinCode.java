@@ -39,6 +39,15 @@ public class PinCode {
         return pin.toString();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof PinCode)){
+            return false;
+        }
+        String pinCharacters = o.toString();
+        return pinCharacters.equals(this.toString());
+    }
+
     private void resetPin() {
         pin.delete(0, pin.length());
     }
