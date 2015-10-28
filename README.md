@@ -51,6 +51,11 @@ pinRequest.startPinRequest();
 
 1. add resources (dimensions) for small screen
 
+1. Add Cancel() to PinScreen API;
+   add reference to caller in listeners at pinscreenlibrary.listeners;
+
+1. add scrrenshot to repo
+
 ##Origin
 https://github.com/AmniX/PinLockDialog
 
