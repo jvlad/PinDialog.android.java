@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "cf.zvlad.pin_dialog"
+        applicationId "by.besmart.pinscreen"
         minSdkVersion 8
         targetSdkVersion 23
         versionCode 1
@@ -23,5 +23,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
-    compile project(':pindialoglibrary')
+    compile project(':pinscreenlibrary')
 }
