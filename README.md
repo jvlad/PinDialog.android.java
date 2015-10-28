@@ -47,14 +47,23 @@ pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
 pinRequest.startPinRequest();
 ```
 ##Development Plan
-1. change indicator stroke color to grey (the same as pinpad button stroke)
 
 1. add resources (dimensions) for small screen
+
+1. Disable edit-action buttons if no any character entered yet
+
+1. Extract DecimalCharactersValuesToResources
 
 1. Add Cancel() to PinScreen API;
    add reference to caller in listeners at pinscreenlibrary.listeners;
 
-1. add scrrenshot to repo
+1. Add extra left-margin for every 4th indicator
+
+1. Decrease pin character views spacing
+
+1. Check if all drawable for backspace button are there
+
+1. add screen shot to readme.md
 
 ##Origin
 https://github.com/AmniX/PinLockDialog
@@ -69,3 +78,5 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
