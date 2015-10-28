@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PinDialog.iml" filepath="$PROJECT_DIR$/PinDialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PinScreen.iml" filepath="$PROJECT_DIR$/PinScreen.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/pindialoglibrary/pindialoglibrary.iml" filepath="$PROJECT_DIR$/pindialoglibrary/pindialoglibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pinscreenlibrary/pinscreenlibrary.iml" filepath="$PROJECT_DIR$/pinscreenlibrary/pinscreenlibrary.iml" />
     </modules>
   </component>
 </project>
