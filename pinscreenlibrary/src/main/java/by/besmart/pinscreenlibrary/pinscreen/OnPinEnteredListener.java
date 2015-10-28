@@ -1,5 +1,5 @@
 package by.besmart.pinscreenlibrary.pinscreen;
 
-public interface OnPinEnteredListener {
+interface OnPinEnteredListener {
     void pinCodeEntered(DecimalPinDialog dialog, String pin);
 }

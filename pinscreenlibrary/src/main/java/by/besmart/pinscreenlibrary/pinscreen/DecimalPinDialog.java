@@ -28,16 +28,16 @@ class DecimalPinDialog extends Dialog {
 
     private Handler invocationHandler;
     private Runnable invokePinEntered;
-    public final int PIN_ENTERED_INVOCATION_DELAY = 150;
+    public final int PIN_ENTERED_INVOCATION_DELAY_MILLIS = 150;
 
     public DecimalPinDialog(Context context, int pinLength) {
-        super(context, R.style.pin_dialog);
+        super(context, R.style.pin_screen);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.setContentView(R.layout.pin_dialog);
         this.pinLength = pinLength;
         enteredCharacters = new PinCode();
-        titleView = (TextView) findViewById(R.id.operation_title);
-        subtitleView = (TextView) findViewById(R.id.description);
+        titleView = (TextView) findViewById(R.id.title);
+        subtitleView = (TextView) findViewById(R.id.subtitle);
         attachListenerToPinCharacters(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,7 +151,7 @@ class DecimalPinDialog extends Dialog {
         enteredCharacters.add(pinChar);
         indicatorsBar.fillNext();
         if (enteredCharacters.size() == pinLength && onPinEnteredListener != null) {
-            invocationHandler.postDelayed(invokePinEntered, PIN_ENTERED_INVOCATION_DELAY);
+            invocationHandler.postDelayed(invokePinEntered, PIN_ENTERED_INVOCATION_DELAY_MILLIS);
         }
     }
 

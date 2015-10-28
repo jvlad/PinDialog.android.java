@@ -2,6 +2,7 @@ package by.besmart.pinscreenlibrary.pinscreen;
 
 import android.content.Context;
 
+import by.besmart.pinscreenlibrary.R;
 import by.besmart.pinscreenlibrary.listeners.OnPinConfirmationFailsListener;
 import by.besmart.pinscreenlibrary.listeners.OnPinCreatedListener;
 import by.besmart.pinscreenlibrary.listeners.OnPinReceivedListener;
@@ -14,8 +15,15 @@ public class PinScreen {
     private DecimalPinDialog pinDialog;
     private OnPinEnteredListener onInitialPinEntered;
     private OnPinEnteredListener onConfirmingPinEntering;
+    private OnPinEnteredListener onPinEnteredListener;
 
     public PinScreen(Context context, int pinLength) {
+        onPinEnteredListener = new OnPinEnteredListener() {
+            @Override
+            public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
+                onPinReceivedListener.pinCodeReceived(pin);
+            }
+        };
         onInitialPinEntered = new OnPinEnteredListener() {
             @Override
             public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
@@ -34,17 +42,14 @@ public class PinScreen {
     public void startPinCreation() {
         pinDialog.clearEnteredPin();
         pinDialog.setOnPinEnteredListener(onInitialPinEntered);
-        pinDialog.setTitle("Enter new please…");
+        pinDialog.setTitle(R.string.create_pin_title);
         pinDialog.show();
     }
 
     public void startPinRequest() {
-        pinDialog.setOnPinEnteredListener(new OnPinEnteredListener() {
-            @Override
-            public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
-                onPinReceivedListener.pinCodeReceived(pin);
-            }
-        });
+        pinDialog.clearEnteredPin();
+        pinDialog.setOnPinEnteredListener(onPinEnteredListener);
+        pinDialog.setTitle(R.string.enter_pin_title);
         pinDialog.show();
     }
 
@@ -73,6 +78,6 @@ public class PinScreen {
         tempPin = pin;
         pinDialog.clearEnteredPin();
         pinDialog.setOnPinEnteredListener(onConfirmingPinEntering);
-        pinDialog.setTitle("Confirm please…");
+        pinDialog.setTitle(R.string.confirm_pin_title);
     }
 }
