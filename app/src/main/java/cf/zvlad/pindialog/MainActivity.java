@@ -4,8 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import cf.zvlad.pindialoglibrary.OnPinWorkflowEndListener;
-import cf.zvlad.pindialoglibrary.PinWorkflow;
+import cf.zvlad.pindialoglibrary.listeners.OnPinConfirmationFailsListener;
+import cf.zvlad.pindialoglibrary.listeners.OnPinCreatedListener;
+import cf.zvlad.pindialoglibrary.pinscreen.PinScreen;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,22 +14,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        PinWorkflow pinTest = new PinWorkflow(this, 5, new OnPinWorkflowEndListener() {
+        final PinScreen pinTest = new PinScreen(this, 5);
+        pinTest.setOnPinConfirmationFailsListener(new OnPinConfirmationFailsListener() {
             @Override
-            public void pinWorkflowEnded(boolean success, String pinCode) {
-                finishPinWorkflow(success, pinCode);
+            public void pinConfirmationFailed() {
+                Toast.makeText(MainActivity.this, "pinConfirmationFailed", Toast.LENGTH_SHORT).show();
+                pinTest.startPinCreation();
+            }
+        });
+        pinTest.setOnPinCreatedListener(new OnPinCreatedListener() {
+            @Override
+            public void pinCodeCreated(String pinCode) {
+                Toast.makeText(MainActivity.this, "Good job: " + pinCode, Toast.LENGTH_SHORT).show();
             }
         });
         pinTest.startPinCreation();
     }
-
-    private void finishPinWorkflow(boolean success, String pinCode) {
-        if (success){
-            Toast.makeText(this, "Good job: " + pinCode, Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Sorry", Toast.LENGTH_SHORT).show();
-        }
-    }
-
 
 }

@@ -7,8 +7,8 @@ import java.util.List;
  * Created by zvlad on 10/26/15.
  */
 public class PinCode {
-    List<Character> enteredCharacters;
-    StringBuilder pin;
+    private List<Character> enteredCharacters;
+    private StringBuilder pin;
 
     public PinCode() {
         enteredCharacters = new ArrayList<>();
@@ -28,6 +28,15 @@ public class PinCode {
             return;
         }
         enteredCharacters.clear();
+    }
+
+    public void clearLastEnteredCharacter() {
+        if (enteredCharacters.size() == 1){
+            enteredCharacters.clear();
+        } else if (enteredCharacters.size() > 1) {
+            int lastCharacterIndex = enteredCharacters.size() - 1;
+            enteredCharacters.remove(lastCharacterIndex);
+        }
     }
 
     @Override
@@ -50,14 +59,5 @@ public class PinCode {
 
     private void resetPin() {
         pin.delete(0, pin.length());
-    }
-
-    public void clearLastEnteredCharacter() {
-        if (enteredCharacters.size() == 1){
-            enteredCharacters.clear();
-        } else if (enteredCharacters.size() > 1) {
-            int lastCharacterIndex = enteredCharacters.size() - 1;
-            enteredCharacters.remove(lastCharacterIndex);
-        }
     }
 }

@@ -1,4 +1,4 @@
-package cf.zvlad.pindialoglibrary.dialog.indicators;
+package cf.zvlad.pindialoglibrary.pinscreen.indicators;
 
 import android.content.Context;
 import android.view.LayoutInflater;

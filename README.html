@@ -1037,13 +1037,13 @@ body .markdown-body
 <h2 id="usage"><a name="user-content-usage" href="#usage" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Usage</h2>
 <p><pre><code>...
         //callback to specify action to do with pin-code entered by user
-        OnPinEnteredListener onPinCodeEnteredListener = new OnPinEnteredListener() {
+        OnPinEnteredListener onPinEnteredListener = new OnPinEnteredListener() {
             @Override
             public void onPinEntered(String pin) {showShortToastWithText(pin);}
         };
 
         //instantiating and showing full-screen dialog with pin-pad
-        Dialog d = new DecimalPinDialog(this, 3, onPinCodeEnteredListener);
+        Dialog d = new DecimalPinDialog(this, 3, onPinEnteredListener);
         d.show();
     }
 
