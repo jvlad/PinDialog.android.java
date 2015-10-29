@@ -159,6 +159,7 @@
         android:layout_alignTop="@id/pin_pad_digit_0"
         android:background="@drawable/pin_pad_edit_button"
         android:paddingRight="3dp"
+        android:textColor="@color/pin_pad_edit_action_foreground"
         android:src="@drawable/backspace_button_background_icon"/>
 
     <Button
@@ -170,5 +171,5 @@
         android:layout_alignTop="@id/pin_pad_digit_0"
         android:background="@drawable/pin_pad_edit_button"
         android:text="@string/clear_all_button_text"
-        android:textColor="@color/pin_pad_edit_action"/>
+        android:textColor="@color/pin_pad_edit_action_foreground"/>
 </RelativeLayout>

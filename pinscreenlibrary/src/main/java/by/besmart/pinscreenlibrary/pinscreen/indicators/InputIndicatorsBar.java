@@ -10,7 +10,7 @@ import java.util.Iterator;
 
 public class InputIndicatorsBar {
     public static int spaceIncreasingPercentRatio = 50;
-    public static int maxIndicatorsWithoutExtraSpacing = 4;
+    public static int maxIndicatorsWithoutExtraSpacing = -3;
     public static int extraSpacingPeriod = 3; // extra space will recurring after specified number of indicators
     public boolean isExtraSpacingEnabled = true;
     private final Context context;

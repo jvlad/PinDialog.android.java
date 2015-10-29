@@ -6,6 +6,7 @@
     <color name="brand">#f2771f</color>
     <color name="screen_background">#343434</color>
     <color name="pin_character_pressed_filling">#3fff</color>
+    <color name="inactive_element">#3fff</color>
 
     <!-- other -->
     <color name="screen_title">@color/text</color>

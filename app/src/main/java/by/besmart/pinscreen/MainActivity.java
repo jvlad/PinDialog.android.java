@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int pinLength = 5;
+        int pinLength = 6;
         final PinScreen pinCreation = new PinScreen(this, pinLength);
         pinCreation.setOnPinConfirmationFailsListener(new OnPinConfirmationFailsListener() {
             @Override
