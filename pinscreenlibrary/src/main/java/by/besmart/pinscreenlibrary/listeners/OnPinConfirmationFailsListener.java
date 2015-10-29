@@ -1,5 +1,7 @@
 package by.besmart.pinscreenlibrary.listeners;
 
+import by.besmart.pinscreenlibrary.pinscreen.PinScreen;
+
 public interface OnPinConfirmationFailsListener {
-    void pinConfirmationFailed();
+    void pinConfirmationFailed(PinScreen pinScreen);
 }

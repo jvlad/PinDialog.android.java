@@ -1,5 +1,7 @@
 package by.besmart.pinscreenlibrary.listeners;
 
+import by.besmart.pinscreenlibrary.pinscreen.PinScreen;
+
 public interface OnPinReceivedListener {
-    void pinCodeReceived(String pinCode);
+    void pinCodeReceived(PinScreen pinScreen, String pinCode);
 }

@@ -21,7 +21,7 @@ public class PinScreen {
         onPinEnteredListener = new OnPinEnteredListener() {
             @Override
             public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
-                onPinReceivedListener.pinCodeReceived(pin);
+                onPinReceivedListener.pinCodeReceived(PinScreen.this, pin);
             }
         };
         onInitialPinEntered = new OnPinEnteredListener() {
@@ -37,6 +37,11 @@ public class PinScreen {
             }
         };
         pinDialog = new DecimalPinDialog(context, pinLength);
+    }
+
+    public void cancel(){
+        tempPin = null;
+        pinDialog.cancel();
     }
 
     public void startPinCreation() {
@@ -67,9 +72,9 @@ public class PinScreen {
 
     private void compareWithTempPin(DecimalPinDialog pinDialog, String pin) {
         if (pin.equals(tempPin)) {
-            onPinCreatedListener.pinCodeCreated(pin);
+            onPinCreatedListener.pinCodeCreated(this, pin);
         } else {
-            onPinConfirmationFailsListener.pinConfirmationFailed();
+            onPinConfirmationFailsListener.pinConfirmationFailed(this);
         }
         tempPin = null;
     }
