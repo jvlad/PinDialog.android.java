@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
        android:shape="oval">
-    <solid android:color="@color/pin_pad_pressed_button_dimming"/>
+    <solid android:color="@color/pin_character_pressed_filling"/>
     <stroke android:width="1dp"
-            android:color="@color/pin_edit_button_stroke"/>
+            android:color="@color/pin_edit_action_stroke"/>
 </shape>

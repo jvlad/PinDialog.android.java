@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="pin_dialog_background">#343434</color>
-    <color name="pin_dialog_title_color">#fff</color>
-    <color name="pin_symbol_button_stroke">#f2771f</color>
-    <color name="pin_pad_pressed_button_dimming">#3fff</color>
-    <color name="pin_input_progress_indicator">#fff</color>
-    <color name="pin_input_progress_filled_indicator">#f2771f</color>
-    <color name="pin_edit_button_stroke">#8fff</color>
+    <!-- base -->
+    <color name="text">#fff</color>
+    <color name="dimmed_text">#8fff</color>
+    <color name="brand">#f2771f</color>
+    <color name="screen_background">#343434</color>
+    <color name="pin_character_pressed_filling">#3fff</color>
+
+    <!-- other -->
+    <color name="screen_title">@color/text</color>
+    <color name="screen_subtitle">@color/text</color>
+    <color name="pin_character_stroke">@color/brand</color>
+    <color name="pin_edit_action_stroke">@color/dimmed_text</color>
+    <color name="input_indicator_stroke">@color/dimmed_text</color>
+    <color name="input_indicator_filling">@color/brand</color>
+    <color name="pin_pad_edit_action">@color/dimmed_text</color>
 </resources>
