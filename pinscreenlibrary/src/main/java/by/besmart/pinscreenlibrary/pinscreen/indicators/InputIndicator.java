@@ -7,7 +7,7 @@ import android.widget.ToggleButton;
 
 import by.besmart.pinscreenlibrary.R;
 
-public class InputIndicator {
+class InputIndicator {
     private ToggleButton indicatorView;
 
     InputIndicator(Context context, ViewGroup indicatorViewContainer) {
@@ -22,7 +22,7 @@ public class InputIndicator {
         }
     }
 
-    ToggleButton getIndicatorView() {
+    ToggleButton getView() {
         return indicatorView;
     }
 

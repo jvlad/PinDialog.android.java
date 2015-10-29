@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Sorry, Pins don't match", Toast.LENGTH_SHORT).show();
 
                 //e.g.
-                pinScreen.cancel();
+//                pinScreen.cancel();
             }
         });
         pinCreation.setOnPinCreatedListener(new OnPinCreatedListener() {
@@ -39,16 +39,16 @@ public class MainActivity extends AppCompatActivity {
         });
         pinCreation.startPinCreation();
 
-        pinLength = 3;
-        final PinScreen pinRequest = new PinScreen(this, pinLength);
-        pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
-            @Override
-            public void pinCodeReceived(PinScreen pinScreen, String pinCode) {
-                //do smth here
-                //e.g.
-                Toast.makeText(MainActivity.this, "Entered pin is: " + pinCode, Toast.LENGTH_SHORT).show();
-            }
-        });
-        pinRequest.startPinRequest();
+//        pinLength = 3;
+//        final PinScreen pinRequest = new PinScreen(this, pinLength);
+//        pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
+//            @Override
+//            public void pinCodeReceived(PinScreen pinScreen, String pinCode) {
+//                //do smth here
+//                //e.g.
+//                Toast.makeText(MainActivity.this, "Entered pin is: " + pinCode, Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        pinRequest.startPinRequest();
     }
 }
