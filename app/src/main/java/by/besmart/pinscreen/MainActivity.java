@@ -16,22 +16,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int pinLength = 5;
+        int pinLength = 6;
         final PinScreen pinCreation = new PinScreen(this, pinLength);
         pinCreation.setOnPinConfirmationFailsListener(new OnPinConfirmationFailsListener() {
             @Override
-            public void pinConfirmationFailed() {
+            public void pinConfirmationFailed(PinScreen pinScreen) {
                 //do smth here
                 //e.g.
                 Toast.makeText(MainActivity.this, "Sorry, Pins don't match", Toast.LENGTH_SHORT).show();
 
                 //e.g.
-                pinCreation.startPinCreation();
+                pinScreen.startPinCreation();
+//                pinScreen.cancel();
             }
         });
         pinCreation.setOnPinCreatedListener(new OnPinCreatedListener() {
             @Override
-            public void pinCodeCreated(String pinCode) {
+            public void pinCodeCreated(PinScreen pinScreen, String pinCode) {
                 //do smth here
                 //e.g.
                 Toast.makeText(MainActivity.this, "Good job: " + pinCode, Toast.LENGTH_SHORT).show();
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 //        final PinScreen pinRequest = new PinScreen(this, pinLength);
 //        pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
 //            @Override
-//            public void pinCodeReceived(String pinCode) {
+//            public void pinCodeReceived(PinScreen pinScreen, String pinCode) {
 //                //do smth here
 //                //e.g.
 //                Toast.makeText(MainActivity.this, "Entered pin is: " + pinCode, Toast.LENGTH_SHORT).show();

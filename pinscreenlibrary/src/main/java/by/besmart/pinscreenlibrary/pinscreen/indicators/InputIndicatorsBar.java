@@ -1,6 +1,7 @@
 package by.besmart.pinscreenlibrary.pinscreen.indicators;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -8,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class InputIndicatorsBar {
+    public static int spaceIncreasingPercentRatio = 60;
+    public static int maxIndicatorsWithoutExtraSpacing = 4;
+    public static int extraSpacingPeriod = 3; // extra space will recurring after specified number of indicators
+    public boolean isExtraSpacingEnabled = true;
     private final Context context;
     private final ViewGroup indicatorsBarContainer;
     private final ArrayList<InputIndicator> indicators;
@@ -33,25 +38,16 @@ public class InputIndicatorsBar {
         }
     }
 
-    public void clearLastFilled(){
-        if (lastFilled == null){
+    public void clearLastFilled() {
+        if (lastFilled == null) {
             return;
         }
         lastFilled.setFilled(false);
-        moveLastFilledToPrevious();
+        setLastFilledToPrevious();
     }
 
-    private void moveLastFilledToPrevious() {
-        int lastFilledIndex = indicators.indexOf(lastFilled);
-        if (lastFilledIndex == 0){
-            lastFilled = null;
-        } else {
-            lastFilled = indicators.get(lastFilledIndex - 1);
-        }
-    }
-
-    public void clearAll(){
-        if (lastFilled == null){
+    public void clearAll() {
+        if (lastFilled == null) {
             return;
         }
         for (int i = 0; i < indicators.size(); i++) {
@@ -59,6 +55,15 @@ public class InputIndicatorsBar {
             indicator.setFilled(false);
         }
         lastFilled = null;
+    }
+
+    private void setLastFilledToPrevious() {
+        int lastFilledIndex = indicators.indexOf(lastFilled);
+        if (lastFilledIndex == 0) {
+            lastFilled = null;
+        } else {
+            lastFilled = indicators.get(lastFilledIndex - 1);
+        }
     }
 
     private void fillFirst() {
@@ -83,10 +88,36 @@ public class InputIndicatorsBar {
     }
 
     private ArrayList<View> createIndicatorsBarView() {
+        if (isExtraSpacingEnabled
+                    && indicators.size() > maxIndicatorsWithoutExtraSpacing) {
+            return createExtraSpacedIndicatorsBar();
+        }
+
+        return createEqualSpacedIndicatorsBar();
+    }
+
+    private ArrayList<View> createExtraSpacedIndicatorsBar() {
         ArrayList<View> views = new ArrayList<>();
         for (int i = 0; i < indicators.size(); i++) {
             InputIndicator indicator = indicators.get(i);
-            views.add(indicator.getIndicatorView());
+            View indicatorView;
+            if (i % extraSpacingPeriod == 0
+                        && i !=0){
+                indicatorView = getIndicatorViewWithIncreasedLeftMargin(indicator);
+            } else {
+                indicatorView = indicator.getView();
+            }
+            views.add(indicatorView);
+        }
+        return views;
+    }
+
+    @NonNull
+    private ArrayList<View> createEqualSpacedIndicatorsBar() {
+        ArrayList<View> views = new ArrayList<>();
+        for (int i = 0; i < indicators.size(); i++) {
+            InputIndicator indicator = indicators.get(i);
+            views.add(indicator.getView());
         }
         return views;
     }
@@ -98,5 +129,16 @@ public class InputIndicatorsBar {
     private InputIndicator getLastIndicator() {
         int lastIndex = indicators.size() - 1;
         return indicators.get(lastIndex);
+    }
+
+    private View getIndicatorViewWithIncreasedLeftMargin(InputIndicator indicator) {
+        View view = indicator.getView();
+        ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
+        double leftMarginPrecise= marginParams.leftMargin;
+        double increasingSize = leftMarginPrecise * (spaceIncreasingPercentRatio / 100.0);
+        leftMarginPrecise += increasingSize;
+        marginParams.leftMargin = ((int) leftMarginPrecise) + 1;
+        view.setLayoutParams(marginParams);
+        return view;
     }
 }
