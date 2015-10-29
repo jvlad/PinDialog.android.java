@@ -48,20 +48,16 @@ pinRequest.startPinRequest();
 ```
 ##Development Plan
 
-1. add resources (dimensions) for small screen
-
-1. Disable edit-action buttons if no any character entered yet
-
-1. Extract DecimalCharactersValuesToResources
-
 1. Add Cancel() to PinScreen API;
    add reference to caller in listeners at pinscreenlibrary.listeners;
 
 1. Add extra left-margin for every 4th indicator
 
-1. Decrease pin character views spacing
+1. Disable edit-action buttons if no any character entered yet
 
-1. Check if all drawable for backspace button are there
+1. Extract DecimalCharactersValuesToResources
+
+1. Check if all-densities drawables for backspace button present
 
 1. add screen shot to readme.md
 
