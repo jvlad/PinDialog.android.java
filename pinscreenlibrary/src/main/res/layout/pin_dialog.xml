@@ -67,7 +67,7 @@
         android:layout_alignTop="@+id/pin_pad_digit_2"
         android:layout_toLeftOf="@id/pin_pad_digit_2"
         android:layout_toStartOf="@id/pin_pad_digit_2"
-        android:text="@string/pin_pad_digit_1"/>
+        android:text="1"/>
 
     <Button
         android:id="@id/pin_pad_digit_2"
@@ -78,7 +78,7 @@
         android:layout_marginLeft="@dimen/pin_character_left_right_margin"
         android:layout_marginRight="@dimen/pin_character_left_right_margin"
         android:layout_marginTop="@dimen/pin_character_top_bottom_margin"
-        android:text="@string/pin_pad_digit_2"/>
+        android:text="2"/>
 
     <Button
         android:id="@id/pin_pad_digit_3"
@@ -86,7 +86,7 @@
         android:layout_alignTop="@id/pin_pad_digit_2"
         android:layout_toEndOf="@id/pin_pad_digit_2"
         android:layout_toRightOf="@id/pin_pad_digit_2"
-        android:text="@string/pin_pad_digit_3"/>
+        android:text="3"/>
 
     <Button
         android:id="@+id/pin_pad_digit_4"
@@ -94,7 +94,7 @@
         android:layout_alignLeft="@id/pin_pad_digit_1"
         android:layout_alignStart="@id/pin_pad_digit_1"
         android:layout_alignTop="@+id/pin_pad_digit_5"
-        android:text="@string/pin_pad_digit_4"/>
+        android:text="4"/>
 
     <Button
         android:id="@id/pin_pad_digit_5"
@@ -104,7 +104,7 @@
         android:layout_below="@id/pin_pad_digit_2"
         android:layout_marginBottom="@dimen/pin_character_top_bottom_margin"
         android:layout_marginTop="@dimen/pin_character_top_bottom_margin"
-        android:text="@string/pin_pad_digit_5"/>
+        android:text="5"/>
 
     <Button
         android:id="@+id/pin_pad_digit_6"
@@ -112,7 +112,7 @@
         android:layout_alignLeft="@id/pin_pad_digit_3"
         android:layout_alignStart="@id/pin_pad_digit_3"
         android:layout_alignTop="@id/pin_pad_digit_5"
-        android:text="@string/pin_pad_digit_6"/>
+        android:text="6"/>
 
 
     <Button
@@ -121,7 +121,7 @@
         android:layout_alignLeft="@id/pin_pad_digit_1"
         android:layout_alignStart="@id/pin_pad_digit_1"
         android:layout_alignTop="@+id/pin_pad_digit_8"
-        android:text="@string/pin_pad_digit_7"/>
+        android:text="7"/>
 
     <Button
         android:id="@id/pin_pad_digit_8"
@@ -131,7 +131,7 @@
         android:layout_below="@id/pin_pad_digit_5"
         android:layout_marginBottom="@dimen/pin_character_top_bottom_margin"
         android:layout_marginTop="@dimen/pin_character_top_bottom_margin"
-        android:text="@string/pin_pad_digit_8"/>
+        android:text="8"/>
 
     <Button
         android:id="@+id/pin_pad_digit_9"
@@ -139,7 +139,7 @@
         android:layout_alignLeft="@id/pin_pad_digit_3"
         android:layout_alignStart="@id/pin_pad_digit_3"
         android:layout_alignTop="@id/pin_pad_digit_8"
-        android:text="@string/pin_pad_digit_9"/>
+        android:text="9"/>
 
     <Button
         android:id="@+id/pin_pad_digit_0"
@@ -148,7 +148,7 @@
         android:layout_alignStart="@id/pin_pad_digit_2"
         android:layout_below="@id/pin_pad_digit_8"
         android:layout_marginTop="10dp"
-        android:text="@string/pin_pad_digit_0"/>
+        android:text="0"/>
 
     <ImageButton
         android:id="@+id/backspace"

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Sorry, Pins don't match", Toast.LENGTH_SHORT).show();
 
                 //e.g.
+                pinScreen.startPinCreation();
 //                pinScreen.cancel();
             }
         });

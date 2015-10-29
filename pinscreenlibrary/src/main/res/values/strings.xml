@@ -5,14 +5,4 @@
     <string name="create_pin_title">Choose new PIN please…</string>
     <string name="confirm_pin_title">Confirm please…</string>
     <string name="enter_pin_title">Enter your PIN please…</string>
-    <string name="pin_pad_digit_1">1</string>
-    <string name="pin_pad_digit_2">2</string>
-    <string name="pin_pad_digit_3">3</string>
-    <string name="pin_pad_digit_4">4</string>
-    <string name="pin_pad_digit_5">5</string>
-    <string name="pin_pad_digit_6">6</string>
-    <string name="pin_pad_digit_7">7</string>
-    <string name="pin_pad_digit_8">8</string>
-    <string name="pin_pad_digit_9">9</string>
-    <string name="pin_pad_digit_0">0</string>
 </resources>
