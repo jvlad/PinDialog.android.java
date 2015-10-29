@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="5dp"
                 android:background="@color/screen_background"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
@@ -11,17 +12,16 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/pin_pad_digit_3"
         android:layout_alignLeft="@+id/pin_pad_digit_1"
-        android:layout_alignRight="@+id/pin_pad_digit_3"
+        android:layout_alignRight="@id/pin_pad_digit_3"
         android:layout_alignStart="@id/pin_pad_digit_1"
-        android:layout_alignEnd="@id/pin_pad_digit_3"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="-20dp"
         android:layout_marginRight="-20dp"
         android:ellipsize="end"
         android:gravity="center_horizontal"
         android:maxLines="1"
-        android:text="Sample Internet Payment Sample Internet Payment Sample Internet Payment"
         android:textColor="@color/screen_title"
         android:textSize="20sp"/>
 
@@ -29,18 +29,18 @@
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/pin_pad_digit_3"
         android:layout_alignLeft="@id/pin_pad_digit_1"
         android:layout_alignRight="@id/pin_pad_digit_3"
         android:layout_alignStart="@id/pin_pad_digit_1"
-        android:layout_alignEnd="@id/pin_pad_digit_3"
         android:layout_below="@id/title"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="-20dp"
         android:layout_marginRight="-20dp"
         android:ellipsize="end"
+        android:maxLines="3"
         android:gravity="center_horizontal"
-        android:maxLines="2"
-        android:text="Sample Internet Payment Sample Internet Payment Sample Internet Payment"
+        android:text="1Sample Internet Payment 2Sample Internet Payment 3Sample Internet Payment 4Sample Internet Payment 5Sample Internet Payment 6Sample Internet Payment"
         android:textColor="@color/screen_subtitle"
         android:textSize="15sp"/>
 
@@ -48,10 +48,10 @@
         android:id="@+id/input_indicators_container"
         android:layout_width="match_parent"
         android:layout_height="15dp"
-        android:layout_alignLeft="@id/pin_pad_digit_1"
-        android:layout_alignStart="@id/pin_pad_digit_1"
         android:layout_alignEnd="@id/pin_pad_digit_3"
+        android:layout_alignLeft="@id/pin_pad_digit_1"
         android:layout_alignRight="@id/pin_pad_digit_3"
+        android:layout_alignStart="@id/pin_pad_digit_1"
         android:layout_below="@id/subtitle"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="6dp"
@@ -74,10 +74,10 @@
         style="@style/pin_pad_button"
         android:layout_below="@id/input_indicators_container"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/pin_character_top_bottom_margin"
+        android:layout_marginLeft="@dimen/pin_character_left_right_margin"
+        android:layout_marginRight="@dimen/pin_character_left_right_margin"
+        android:layout_marginTop="@dimen/pin_character_top_bottom_margin"
         android:text="@string/pin_pad_digit_2"/>
 
     <Button
@@ -102,8 +102,8 @@
         android:layout_alignLeft="@id/pin_pad_digit_2"
         android:layout_alignStart="@id/pin_pad_digit_2"
         android:layout_below="@id/pin_pad_digit_2"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/pin_character_top_bottom_margin"
+        android:layout_marginTop="@dimen/pin_character_top_bottom_margin"
         android:text="@string/pin_pad_digit_5"/>
 
     <Button
@@ -128,10 +128,9 @@
         style="@style/pin_pad_button"
         android:layout_alignLeft="@id/pin_pad_digit_2"
         android:layout_alignStart="@id/pin_pad_digit_2"
-
         android:layout_below="@id/pin_pad_digit_5"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="@dimen/pin_character_top_bottom_margin"
+        android:layout_marginTop="@dimen/pin_character_top_bottom_margin"
         android:text="@string/pin_pad_digit_8"/>
 
     <Button
@@ -148,7 +147,6 @@
         android:layout_alignLeft="@id/pin_pad_digit_2"
         android:layout_alignStart="@id/pin_pad_digit_2"
         android:layout_below="@id/pin_pad_digit_8"
-        android:layout_marginBottom="5dp"
         android:layout_marginTop="10dp"
         android:text="@string/pin_pad_digit_0"/>
 
@@ -171,6 +169,6 @@
         android:layout_alignStart="@id/pin_pad_digit_1"
         android:layout_alignTop="@id/pin_pad_digit_0"
         android:background="@drawable/pin_pad_edit_button"
-        android:textColor="@color/pin_pad_edit_action"
-        android:text="@string/clear_all_button_text"/>
+        android:text="@string/clear_all_button_text"
+        android:textColor="@color/pin_pad_edit_action"/>
 </RelativeLayout>
