@@ -2,41 +2,61 @@ package by.besmart.pinscreenlibrary.pinscreen;
 
 import android.content.Context;
 
-import by.besmart.pinscreenlibrary.R;
 import by.besmart.pinscreenlibrary.listeners.OnPinConfirmationFailsListener;
 import by.besmart.pinscreenlibrary.listeners.OnPinCreatedListener;
 import by.besmart.pinscreenlibrary.listeners.OnPinReceivedListener;
+import by.besmart.pinscreenlibrary.pinscreen.customization.PinScreenColors;
+import by.besmart.pinscreenlibrary.pinscreen.customization.PinScreenTitles;
 
 public class PinScreen {
     private String tempPin;
-    private OnPinReceivedListener onPinReceivedListener;
-    private OnPinConfirmationFailsListener onPinConfirmationFailsListener;
-    private OnPinCreatedListener onPinCreatedListener;
-    private DecimalPinDialog pinDialog;
-    private OnPinEnteredListener onInitialPinEntered;
-    private OnPinEnteredListener onConfirmingPinEntering;
-    private OnPinEnteredListener onPinEnteredListener;
 
-    public PinScreen(Context context, int pinLength) {
+    private DecimalPinDialog pinDialog;
+    private InputIndicatorsBar indicatorsBar;
+    private OnPinEnteredListener onPinEnteredListener;
+    private OnPinEnteredListener onInitialPinEnteredListener;
+    private OnPinEnteredListener onConfirmingPinEnteredListener;
+
+    private OnPinReceivedListener onPinReceivedListener;
+    private OnPinCreatedListener onPinCreatedListener;
+    private OnPinConfirmationFailsListener onPinConfirmationFailsListener;
+
+    public PinScreenTitles titles;
+
+    //todo implement coloring logic
+    public PinScreenColors colors;
+
+    public PinScreen(Context context, int pinLength, PinScreenColors colors) {
         onPinEnteredListener = new OnPinEnteredListener() {
             @Override
             public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
                 onPinReceivedListener.pinCodeReceived(PinScreen.this, pin);
             }
         };
-        onInitialPinEntered = new OnPinEnteredListener() {
+        onInitialPinEnteredListener = new OnPinEnteredListener() {
             @Override
             public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
                 confirm(dialog, pin);
             }
         };
-        onConfirmingPinEntering = new OnPinEnteredListener() {
+        onConfirmingPinEnteredListener = new OnPinEnteredListener() {
             @Override
             public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
                 compareWithTempPin(dialog, pin);
             }
         };
         pinDialog = new DecimalPinDialog(context, pinLength);
+        indicatorsBar = pinDialog.indicatorsBar;
+        titles = new PinScreenTitles(context);
+        this.colors = colors;
+    }
+
+    public PinScreen(Context context, int pinLength) {
+        this(context, pinLength, new PinScreenColors(context));
+    }
+
+    public InputIndicatorsBar getIndicatorsBar() {
+        return indicatorsBar;
     }
 
     public void cancel(){
@@ -46,15 +66,17 @@ public class PinScreen {
 
     public void startPinCreation() {
         pinDialog.clearEnteredPin();
-        pinDialog.setOnPinEnteredListener(onInitialPinEntered);
-        pinDialog.setTitle(R.string.create_pin_title);
+        pinDialog.setOnPinEnteredListener(onInitialPinEnteredListener);
+        pinDialog.setTitle(titles.getInitializingTitle());
+        pinDialog.setSubtitle(titles.getInitializingSubtitle());
         pinDialog.show();
     }
 
     public void startPinRequest() {
         pinDialog.clearEnteredPin();
         pinDialog.setOnPinEnteredListener(onPinEnteredListener);
-        pinDialog.setTitle(R.string.enter_pin_title);
+        pinDialog.setTitle(titles.getRequestTitle());
+        pinDialog.setSubtitle(titles.getRequestSubtitle());
         pinDialog.show();
     }
 
@@ -82,7 +104,8 @@ public class PinScreen {
     private void confirm(DecimalPinDialog pinDialog, String pin) {
         tempPin = pin;
         pinDialog.clearEnteredPin();
-        pinDialog.setOnPinEnteredListener(onConfirmingPinEntering);
-        pinDialog.setTitle(R.string.confirm_pin_title);
+        pinDialog.setOnPinEnteredListener(onConfirmingPinEnteredListener);
+        pinDialog.setTitle(titles.getConfirmationTitle());
+        pinDialog.setSubtitle(titles.getConfirmationSubtitle());
     }
 }

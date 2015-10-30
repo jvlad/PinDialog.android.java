@@ -1,4 +1,4 @@
-package by.besmart.pinscreenlibrary.pinscreen.indicators;
+package by.besmart.pinscreenlibrary.pinscreen;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,31 +6,53 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class InputIndicatorsBar {
-    public static int spaceIncreasingPercentRatio = 60;
-    public static int maxIndicatorsWithoutExtraSpacing = 4;
-    public static int extraSpacingPeriod = 3; // extra space will recurring after specified number of indicators
-    public boolean isExtraSpacingEnabled = true;
+    private int spaceIncreasingPercentRatio = 100;
+    private int maxIndicatorsWithoutExtraSpacing = 4;
+    private int extraSpacingPeriod = 3; // number of indicators extra space will recurring after
+    private boolean isExtraSpacingEnabled = true;
     private final Context context;
     private final ViewGroup indicatorsBarContainer;
     private final ArrayList<InputIndicator> indicators;
-    private ArrayList<View> indicatorsBarView;
     private InputIndicator lastFilled = null;
 
-    public InputIndicatorsBar(Context context, ViewGroup indicatorsBarContainer, int quantity) {
+    InputIndicatorsBar(Context context, ViewGroup indicatorsBarContainer, int quantity) {
         this.context = context;
         this.indicatorsBarContainer = indicatorsBarContainer;
         indicators = createIndicators(quantity);
-        indicatorsBarView = createIndicatorsBarView();
+        refreshViews();
     }
 
-    public Iterator<View> getViewsIterator() {
-        return indicatorsBarView.iterator();
+    public void setSpaceIncreasingPercentRatio(int spaceIncreasingPercentRatio) {
+        this.spaceIncreasingPercentRatio = spaceIncreasingPercentRatio;
+        refreshViews();
     }
 
-    public void fillNext() {
+    public void setMaxIndicatorsWithoutExtraSpacing(int maxIndicatorsWithoutExtraSpacing) {
+        this.maxIndicatorsWithoutExtraSpacing = maxIndicatorsWithoutExtraSpacing;
+        refreshViews();
+    }
+
+    public void setExtraSpacingPeriod(int extraSpacingPeriod) {
+        this.extraSpacingPeriod = extraSpacingPeriod;
+        refreshViews();
+    }
+
+    public void setIsExtraSpacingEnabled(boolean isExtraSpacingEnabled) {
+        this.isExtraSpacingEnabled = isExtraSpacingEnabled;
+        refreshViews();
+    }
+
+    void refreshViews() {
+        indicatorsBarContainer.removeAllViews();
+        ArrayList<View> indicatorsViews = createIndicatorsBarView();
+        for (int i = 0; i < indicatorsViews.size(); i++) {
+            indicatorsBarContainer.addView(indicatorsViews.get(i));
+        }
+    }
+
+    void fillNext() {
         if (lastFilled == null) {
             fillFirst();
         } else if (lastFilled != getLastIndicator()) {
@@ -38,7 +60,7 @@ public class InputIndicatorsBar {
         }
     }
 
-    public void clearLastFilled() {
+    void clearLastFilled() {
         if (lastFilled == null) {
             return;
         }
@@ -46,7 +68,7 @@ public class InputIndicatorsBar {
         setLastFilledToPrevious();
     }
 
-    public void clearAll() {
+    void clearAll() {
         if (lastFilled == null) {
             return;
         }
@@ -92,7 +114,6 @@ public class InputIndicatorsBar {
                     && indicators.size() > maxIndicatorsWithoutExtraSpacing) {
             return createExtraSpacedIndicatorsBar();
         }
-
         return createEqualSpacedIndicatorsBar();
     }
 
@@ -100,12 +121,11 @@ public class InputIndicatorsBar {
         ArrayList<View> views = new ArrayList<>();
         for (int i = 0; i < indicators.size(); i++) {
             InputIndicator indicator = indicators.get(i);
-            View indicatorView;
+            indicator.resetView();
+            View indicatorView = indicator.getView();
             if (i % extraSpacingPeriod == 0
-                        && i !=0){
-                indicatorView = getIndicatorViewWithIncreasedLeftMargin(indicator);
-            } else {
-                indicatorView = indicator.getView();
+                        && i != 0) {
+                increaseLeftMargin(indicatorView);
             }
             views.add(indicatorView);
         }
@@ -117,6 +137,7 @@ public class InputIndicatorsBar {
         ArrayList<View> views = new ArrayList<>();
         for (int i = 0; i < indicators.size(); i++) {
             InputIndicator indicator = indicators.get(i);
+            indicator.resetView();
             views.add(indicator.getView());
         }
         return views;
@@ -131,14 +152,12 @@ public class InputIndicatorsBar {
         return indicators.get(lastIndex);
     }
 
-    private View getIndicatorViewWithIncreasedLeftMargin(InputIndicator indicator) {
-        View view = indicator.getView();
+    void increaseLeftMargin(View view) {
         ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) view.getLayoutParams();
-        double leftMarginPrecise= marginParams.leftMargin;
+        double leftMarginPrecise = marginParams.leftMargin;
         double increasingSize = leftMarginPrecise * (spaceIncreasingPercentRatio / 100.0);
         leftMarginPrecise += increasingSize;
         marginParams.leftMargin = ((int) leftMarginPrecise) + 1;
         view.setLayoutParams(marginParams);
-        return view;
     }
 }

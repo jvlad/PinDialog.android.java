@@ -3,7 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
-                android:background="@color/screen_background"
+                android:background="@color/background_default"
                 android:gravity="center_vertical"
                 android:orientation="vertical"
                 android:padding="10dp">
@@ -40,7 +40,7 @@
         android:ellipsize="end"
         android:maxLines="3"
         android:gravity="center_horizontal"
-        android:text="1Sample Internet Payment 2Sample Internet Payment 3Sample Internet Payment 4Sample Internet Payment 5Sample Internet Payment 6Sample Internet Payment"
+        android:text=""
         android:textColor="@color/screen_subtitle"
         android:textSize="15sp"/>
 
@@ -48,10 +48,6 @@
         android:id="@+id/input_indicators_container"
         android:layout_width="match_parent"
         android:layout_height="15dp"
-        android:layout_alignEnd="@id/pin_pad_digit_3"
-        android:layout_alignLeft="@id/pin_pad_digit_1"
-        android:layout_alignRight="@id/pin_pad_digit_3"
-        android:layout_alignStart="@id/pin_pad_digit_1"
         android:layout_below="@id/subtitle"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="6dp"

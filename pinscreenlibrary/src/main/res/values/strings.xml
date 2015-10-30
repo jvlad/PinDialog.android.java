@@ -2,7 +2,7 @@
     <string name="app_name">PinScreenLibrary</string>
     <string name="pin_input_filled_indicator_description">Индикатор введенного символа</string>
     <string name="clear_all_button_text">Reset</string>
-    <string name="create_pin_title">Choose new PIN please…</string>
-    <string name="confirm_pin_title">Confirm please…</string>
-    <string name="enter_pin_title">Enter your PIN please…</string>
+    <string name="create_pin_title_default">Choose new PIN please…</string>
+    <string name="confirm_pin_title_default">Confirm please…</string>
+    <string name="request_pin_title_default">Enter your PIN please…</string>
 </resources>
