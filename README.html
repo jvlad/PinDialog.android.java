@@ -1044,18 +1044,18 @@ body .markdown-body
 final PinScreen pinCreation = new PinScreen(this, pinLength);
 pinCreation.setOnPinConfirmationFailsListener(new OnPinConfirmationFailsListener() {
    @Override
-   public void pinConfirmationFailed() {
+   public void pinConfirmationFailed(PinScreen pinScreen) {
        //do smth here
        //e.g.
        Toast.makeText(MainActivity.this, &quot;Sorry, Pins don't match&quot;, Toast.LENGTH_SHORT).show();
 
        //e.g.
-       pinCreation.startPinCreation();
+       pinScreen.cancel();
    }
 });
 pinCreation.setOnPinCreatedListener(new OnPinCreatedListener() {
    @Override
-   public void pinCodeCreated(String pinCode) {
+   public void pinCodeCreated(PinScreen pinScreen, String pinCode) {
        //do smth here
        //e.g.
        Toast.makeText(MainActivity.this, &quot;Good job: &quot; + pinCode, Toast.LENGTH_SHORT).show();
@@ -1069,7 +1069,7 @@ pinCreation.startPinCreation();
 final PinScreen pinRequest = new PinScreen(this, pinLength);
 pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
    @Override
-   public void pinCodeReceived(String pinCode) {
+   public void pinCodeReceived(PinScreen pinScreen, String pinCode) {
        //do smth here
        //e.g.
        Toast.makeText(MainActivity.this, &quot;Entered pin is: &quot; + pinCode, Toast.LENGTH_SHORT).show();
@@ -1081,27 +1081,30 @@ pinRequest.startPinRequest();
 <h2 id="development-plan"><a name="user-content-development-plan" href="#development-plan" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Development Plan</h2>
 <ol>
 <li>
-<p>Add Cancel() to PinScreen API;<br />
-   add reference to caller in listeners at pinscreenlibrary.listeners;</p>
+<p>add to API setters for</p>
+<ol>
+<li>title</li>
+<li>subtitle</li>
+<li>brand color</li>
+<li>background color</li>
+<li>text color</li>
+<li>inactive color</li>
+</ol>
 </li>
 <li>
-<p>Add extra left-margin for every 4th indicator</p>
-</li>
-<li>
-<p>Disable edit-action buttons if no any character entered yet</p>
-</li>
-<li>
-<p>Extract DecimalCharactersValuesToResources</p>
-</li>
-<li>
-<p>Check if all-densities drawables for backspace button present</p>
+<p>Consider to use Dialog fragments</p>
 </li>
 <li>
 <p>add screen shot to readme.md</p>
 </li>
+<li>
+<p>Art:</p>
+</li>
+<li>Check if all-densities drawables for backspace button present</li>
+<li>make additional drawables for inactive backspace</li>
 </ol>
 <h2 id="origin"><a name="user-content-origin" href="#origin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Origin</h2>
-<p><a href="https://github.com/AmniX/PinLockDialog">https://github.com/AmniX/PinLockDialog</a></p>
+<p><a href="https://github.com/AmniX/PinLockDialog">https://github.com/AmniX/PinLockDialog</a>. Thanks.</p>
 <h2 id="licence"><a name="user-content-licence" href="#licence" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Licence</h2>
 <p>The MIT License (MIT)</p>
 <p>Vlad Zamskoi © 2015 </p>
