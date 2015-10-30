@@ -45,13 +45,7 @@ pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
 pinRequest.startPinRequest();
 ```
 ##Development Plan
-1. add to API setters for
-    1. title
-    1. subtitle
-    1. brand color
-    1. background color
-    1. text color
-    1. inactive color
+1. implement colors customization logic
 
 1. Consider to use Dialog fragments
 
