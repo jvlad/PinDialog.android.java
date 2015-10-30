@@ -1,7 +1,6 @@
 package by.besmart.pinscreenlibrary.pinscreen;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import android.app.Dialog;
@@ -12,17 +11,15 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 
-import by.besmart.pinscreenlibrary.pinscreen.indicators.InputIndicatorsBar;
 import by.besmart.pinscreenlibrary.R;
 
 class DecimalPinDialog extends Dialog {
     public final int PIN_ENTERED_INVOCATION_DELAY_MILLIS = 150;
 
     private final int pinLength;
-    private InputIndicatorsBar indicatorsBar;
+    InputIndicatorsBar indicatorsBar;
 
     private OnPinEnteredListener onPinEnteredListener;
-    private ViewGroup inputIndicatorsContainer;
     private TextView titleView;
     private TextView subtitleView;
 
@@ -55,9 +52,7 @@ class DecimalPinDialog extends Dialog {
                 pinEditViewOnClick(v);
             }
         });
-        inputIndicatorsContainer = (ViewGroup) findViewById(R.id.input_indicators_container);
-        indicatorsBar = new InputIndicatorsBar(context, inputIndicatorsContainer, this.pinLength);
-        displayIndicatorBar();
+        ViewGroup inputIndicatorsContainer = (ViewGroup) findViewById(R.id.input_indicators_container);
         invokePinEntered = new Runnable() {
             @Override
             public void run() {
@@ -65,6 +60,7 @@ class DecimalPinDialog extends Dialog {
             }
         };
         invocationHandler = new Handler();
+        indicatorsBar = new InputIndicatorsBar(context, inputIndicatorsContainer, this.pinLength);
     }
 
     public void clearEnteredPin() {
@@ -117,13 +113,6 @@ class DecimalPinDialog extends Dialog {
             setPinEditViewsEnabled(false);
         } else if (enteredCharacters.size() > 1) {
             enteredCharacters.remove(enteredCharacters.size() - 1);
-        }
-    }
-
-    private void displayIndicatorBar() {
-        Iterator<View> viewsIterator = indicatorsBar.getViewsIterator();
-        while (viewsIterator.hasNext()) {
-            inputIndicatorsContainer.addView(viewsIterator.next());
         }
     }
 

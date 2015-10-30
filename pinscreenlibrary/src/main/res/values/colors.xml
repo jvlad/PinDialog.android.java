@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- base -->
-    <color name="text">#fff</color>
-    <color name="dimmed_text">#8fff</color>
-    <color name="brand">#f2771f</color>
-    <color name="screen_background">#343434</color>
-    <color name="pin_character_pressed_filling">#3fff</color>
-    <color name="inactive_element">#3fff</color>
+    <color name="text_default">#fff</color>
+    <color name="brand_default">#f2771f</color>
+    <color name="background_default">#343434</color>
+    <color name="inactive_element_default">#3fff</color>
 
     <!-- other -->
-    <color name="screen_title">@color/text</color>
-    <color name="screen_subtitle">@color/text</color>
-    <color name="pin_character_stroke">@color/brand</color>
-    <color name="pin_edit_action_stroke">@color/dimmed_text</color>
-    <color name="input_indicator_stroke">@color/dimmed_text</color>
-    <color name="input_indicator_filling">@color/brand</color>
-    <color name="pin_pad_edit_action">@color/dimmed_text</color>
+    <color name="strokes_default">#8fff</color>
+    <color name="pin_character_pressed_filling">@color/inactive_element_default</color>
+    <color name="screen_title">@color/text_default</color>
+    <color name="screen_subtitle">@color/text_default</color>
+    <color name="pin_character_stroke">@color/brand_default</color>
+    <color name="input_indicator_filling">@color/brand_default</color>
+
+    <color name="pin_edit_action_stroke">@color/strokes_default</color>
+    <color name="input_indicator_stroke">@color/strokes_default</color>
+    <color name="pin_pad_edit_action">@color/strokes_default</color>
 </resources>
