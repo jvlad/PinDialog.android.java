@@ -1,12 +1,9 @@
-package by.besmart.pinscreenlibrary.pinscreen.customization;
+package by.besmart.pinscreenlibrary.pinscreen;
 
 import android.content.Context;
 
 import by.besmart.pinscreenlibrary.R;
 
-/**
- * Created by zvlad on 10/30/15.
- */
 public class PinScreenTitles {
     private String initializingTitle;
     private String initializingSubtitle = "";

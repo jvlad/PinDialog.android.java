@@ -5,14 +5,11 @@ import android.content.Context;
 import by.besmart.pinscreenlibrary.listeners.OnPinConfirmationFailsListener;
 import by.besmart.pinscreenlibrary.listeners.OnPinCreatedListener;
 import by.besmart.pinscreenlibrary.listeners.OnPinReceivedListener;
-import by.besmart.pinscreenlibrary.pinscreen.customization.PinScreenColors;
-import by.besmart.pinscreenlibrary.pinscreen.customization.PinScreenTitles;
 
 public class PinScreen {
     private String tempPin;
 
-    private DecimalPinDialog pinDialog;
-    private InputIndicatorsBar indicatorsBar;
+    private DecimalPinDialog pinView;
     private OnPinEnteredListener onPinEnteredListener;
     private OnPinEnteredListener onInitialPinEnteredListener;
     private OnPinEnteredListener onConfirmingPinEnteredListener;
@@ -21,12 +18,9 @@ public class PinScreen {
     private OnPinCreatedListener onPinCreatedListener;
     private OnPinConfirmationFailsListener onPinConfirmationFailsListener;
 
-    public PinScreenTitles titles;
+    private PinScreenTitles titles;
 
-    //todo implement coloring logic
-    public PinScreenColors colors;
-
-    public PinScreen(Context context, int pinLength, PinScreenColors colors) {
+    public PinScreen(Context context, int pinLength) {
         onPinEnteredListener = new OnPinEnteredListener() {
             @Override
             public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
@@ -42,42 +36,54 @@ public class PinScreen {
         onConfirmingPinEnteredListener = new OnPinEnteredListener() {
             @Override
             public void pinCodeEntered(DecimalPinDialog dialog, String pin) {
-                compareWithTempPin(dialog, pin);
+                compareWithTempPin(pin);
             }
         };
-        pinDialog = new DecimalPinDialog(context, pinLength);
-        indicatorsBar = pinDialog.indicatorsBar;
+        pinView = new DecimalPinDialog(context, pinLength);
         titles = new PinScreenTitles(context);
-        this.colors = colors;
     }
 
-    public PinScreen(Context context, int pinLength) {
-        this(context, pinLength, new PinScreenColors(context));
+    public void startPinCreation() {
+        pinView.reset();
+        pinView.setOnPinEnteredListener(onInitialPinEnteredListener);
+        pinView.setTitle(titles.getInitializingTitle());
+        pinView.setSubtitle(titles.getInitializingSubtitle());
+        pinView.show();
     }
 
-    public InputIndicatorsBar getIndicatorsBar() {
-        return indicatorsBar;
+    private void confirm(DecimalPinDialog pinDialog, String pin) {
+        tempPin = pin;
+        pinDialog.reset();
+        pinDialog.setOnPinEnteredListener(onConfirmingPinEnteredListener);
+        pinDialog.setTitle(titles.getConfirmationTitle());
+        pinDialog.setSubtitle(titles.getConfirmationSubtitle());
+    }
+
+    private void compareWithTempPin(String pin) {
+        if (pin.equals(tempPin)) {
+            onPinCreatedListener.pinCodeCreated(this, pin);
+        } else {
+            onPinConfirmationFailsListener.pinConfirmationFailed(this);
+        }
+        tempPin = null;
+    }
+
+    public void startPinRequest() {
+        pinView.reset();
+        pinView.setOnPinEnteredListener(onPinEnteredListener);
+        pinView.setTitle(titles.getRequestTitle());
+        pinView.setSubtitle(titles.getRequestSubtitle());
+        pinView.show();
     }
 
     public void cancel(){
         tempPin = null;
-        pinDialog.cancel();
+        pinView.reset();
+        pinView.cancel();
     }
 
-    public void startPinCreation() {
-        pinDialog.clearEnteredPin();
-        pinDialog.setOnPinEnteredListener(onInitialPinEnteredListener);
-        pinDialog.setTitle(titles.getInitializingTitle());
-        pinDialog.setSubtitle(titles.getInitializingSubtitle());
-        pinDialog.show();
-    }
-
-    public void startPinRequest() {
-        pinDialog.clearEnteredPin();
-        pinDialog.setOnPinEnteredListener(onPinEnteredListener);
-        pinDialog.setTitle(titles.getRequestTitle());
-        pinDialog.setSubtitle(titles.getRequestSubtitle());
-        pinDialog.show();
+    public InputIndicatorsBar getIndicatorsBar() {
+        return pinView.getIndicatorsBar();
     }
 
     public void setOnPinReceivedListener(OnPinReceivedListener onPinReceivedListener) {
@@ -92,20 +98,7 @@ public class PinScreen {
         this.onPinCreatedListener = onPinCreatedListener;
     }
 
-    private void compareWithTempPin(DecimalPinDialog pinDialog, String pin) {
-        if (pin.equals(tempPin)) {
-            onPinCreatedListener.pinCodeCreated(this, pin);
-        } else {
-            onPinConfirmationFailsListener.pinConfirmationFailed(this);
-        }
-        tempPin = null;
-    }
-
-    private void confirm(DecimalPinDialog pinDialog, String pin) {
-        tempPin = pin;
-        pinDialog.clearEnteredPin();
-        pinDialog.setOnPinEnteredListener(onConfirmingPinEnteredListener);
-        pinDialog.setTitle(titles.getConfirmationTitle());
-        pinDialog.setSubtitle(titles.getConfirmationSubtitle());
+    public PinScreenTitles getTitles() {
+        return titles;
     }
 }

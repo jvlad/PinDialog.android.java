@@ -36,20 +36,22 @@ public class MainActivity extends AppCompatActivity {
                 //do smth here
                 //e.g.
                 Toast.makeText(MainActivity.this, "Good job: " + pinCode, Toast.LENGTH_SHORT).show();
+
             }
         });
-        pinCreation.startPinCreation();
+//        pinCreation.startPinCreation();
 
-//        pinLength = 3;
-//        final PinScreen pinRequest = new PinScreen(this, pinLength);
-//        pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
-//            @Override
-//            public void pinCodeReceived(PinScreen pinScreen, String pinCode) {
-//                //do smth here
-//                //e.g.
-//                Toast.makeText(MainActivity.this, "Entered pin is: " + pinCode, Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//        pinRequest.startPinRequest();
+        pinLength = 4;
+        PinScreen pinRequest = new PinScreen(MainActivity.this, pinLength);
+        pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
+            @Override
+            public void pinCodeReceived(PinScreen pinScreen, String pinCode) {
+                //do smth here
+                //e.g.
+                Toast.makeText(MainActivity.this, "Entered pin is: " + pinCode, Toast.LENGTH_SHORT).show();
+                pinScreen.cancel();
+            }
+        });
+        pinRequest.startPinRequest();
     }
 }
