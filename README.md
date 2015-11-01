@@ -45,16 +45,18 @@ pinRequest.setOnPinReceivedListener(new OnPinReceivedListener() {
 });
 pinRequest.startPinRequest();
 ```
-##Development Plan
-1. implement colors customization logic
 
-1. Consider to use Dialog fragments
+##FFF: Features For Future
+1. Usage of Dialog fragments
 
-1. add screen shot to readme.md
+1. Theme customization API
+
+1. Adding screen-shot to readme.md
 
 1. Art:
    1. Check if all-densities drawables for backspace button present
    1. make additional drawables for inactive backspace
+
 
 ##Origin
 https://github.com/AmniX/PinLockDialog. Thanks.
