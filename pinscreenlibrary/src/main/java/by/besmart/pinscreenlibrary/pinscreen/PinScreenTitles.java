@@ -1,4 +1,4 @@
-package by.besmart.pinscreenlibrary.pinscreen.customization;
+package by.besmart.pinscreenlibrary.pinscreen;
 
 import android.content.Context;
 
