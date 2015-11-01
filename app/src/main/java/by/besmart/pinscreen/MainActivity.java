@@ -1,5 +1,6 @@
 package by.besmart.pinscreen;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -8,6 +9,7 @@ import by.besmart.pinscreenlibrary.listeners.OnPinConfirmationFailsListener;
 import by.besmart.pinscreenlibrary.listeners.OnPinCreatedListener;
 import by.besmart.pinscreenlibrary.listeners.OnPinReceivedListener;
 import by.besmart.pinscreenlibrary.pinscreen.PinScreen;
+import by.besmart.pinscreenlibrary.pinscreen.customization.PinScreenColors;
 
 public class MainActivity extends AppCompatActivity {
 

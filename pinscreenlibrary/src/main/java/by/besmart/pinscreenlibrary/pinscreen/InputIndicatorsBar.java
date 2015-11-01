@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 public class InputIndicatorsBar {
-    private int spaceIncreasingPercentRatio = 100;
+    private int spaceIncreasingPercentRatio = 90;
     private int maxIndicatorsWithoutExtraSpacing = 4;
     private int extraSpacingPeriod = 3; // number of indicators extra space will recurring after
     private boolean isExtraSpacingEnabled = true;

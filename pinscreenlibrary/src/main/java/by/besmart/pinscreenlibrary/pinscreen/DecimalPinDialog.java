@@ -12,12 +12,13 @@ import android.view.Window;
 import android.widget.TextView;
 
 import by.besmart.pinscreenlibrary.R;
+import by.besmart.pinscreenlibrary.pinscreen.customization.PinScreenColors;
 
 class DecimalPinDialog extends Dialog {
     public final int PIN_ENTERED_INVOCATION_DELAY_MILLIS = 150;
 
     private final int pinLength;
-    InputIndicatorsBar indicatorsBar;
+    private InputIndicatorsBar indicatorsBar;
 
     private OnPinEnteredListener onPinEnteredListener;
     private TextView titleView;
@@ -73,6 +74,10 @@ class DecimalPinDialog extends Dialog {
     public void setTitle(CharSequence title) {
         super.setTitle(title);
         titleView.setText(title);
+    }
+
+    public InputIndicatorsBar getIndicatorsBar() {
+        return indicatorsBar;
     }
 
     private String buildPin() {

@@ -6,9 +6,6 @@ import android.graphics.Color;
 import by.besmart.pinscreenlibrary.R;
 import by.besmart.pinscreenlibrary.compatibility.ColorResource;
 
-/**
- * Created by zvlad on 10/30/15.
- */
 public class PinScreenColors {
     private int brandColor;
     private int strokesColor;
@@ -22,6 +19,14 @@ public class PinScreenColors {
         backgroundColor = ColorResource.getColor(context, R.color.background_default);
         textColor = ColorResource.getColor(context, R.color.text_default);
         inactiveElementColor = ColorResource.getColor(context, R.color.inactive_element_default);
+    }
+
+    public PinScreenColors(int brandColor, int strokesColor, int backgroundColor, int textColor, int inactiveElementColor) {
+        this.brandColor = brandColor;
+        this.strokesColor = strokesColor;
+        this.backgroundColor = backgroundColor;
+        this.textColor = textColor;
+        this.inactiveElementColor = inactiveElementColor;
     }
 
     public int getBrandColor() {

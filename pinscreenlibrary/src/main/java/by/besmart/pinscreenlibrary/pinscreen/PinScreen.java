@@ -21,10 +21,8 @@ public class PinScreen {
     private OnPinCreatedListener onPinCreatedListener;
     private OnPinConfirmationFailsListener onPinConfirmationFailsListener;
 
-    public PinScreenTitles titles;
-
-    //todo implement coloring logic
-    public PinScreenColors colors;
+    private PinScreenTitles titles;
+    private PinScreenColors colors;
 
     public PinScreen(Context context, int pinLength, PinScreenColors colors) {
         onPinEnteredListener = new OnPinEnteredListener() {
@@ -46,7 +44,7 @@ public class PinScreen {
             }
         };
         pinDialog = new DecimalPinDialog(context, pinLength);
-        indicatorsBar = pinDialog.indicatorsBar;
+        indicatorsBar = pinDialog.getIndicatorsBar();
         titles = new PinScreenTitles(context);
         this.colors = colors;
     }
@@ -90,6 +88,14 @@ public class PinScreen {
 
     public void setOnPinCreatedListener(OnPinCreatedListener onPinCreatedListener) {
         this.onPinCreatedListener = onPinCreatedListener;
+    }
+
+    public PinScreenTitles getTitles() {
+        return titles;
+    }
+
+    public void setTitles(PinScreenTitles titles) {
+        this.titles = titles;
     }
 
     private void compareWithTempPin(DecimalPinDialog pinDialog, String pin) {

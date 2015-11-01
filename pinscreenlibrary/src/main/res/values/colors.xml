@@ -5,15 +5,14 @@
     <color name="brand_default">#f2771f</color>
     <color name="background_default">#343434</color>
     <color name="inactive_element_default">#3fff</color>
+    <color name="strokes_default">#8fff</color>
 
     <!-- other -->
-    <color name="strokes_default">#8fff</color>
     <color name="pin_character_pressed_filling">@color/inactive_element_default</color>
     <color name="screen_title">@color/text_default</color>
     <color name="screen_subtitle">@color/text_default</color>
     <color name="pin_character_stroke">@color/brand_default</color>
     <color name="input_indicator_filling">@color/brand_default</color>
-
     <color name="pin_edit_action_stroke">@color/strokes_default</color>
     <color name="input_indicator_stroke">@color/strokes_default</color>
     <color name="pin_pad_edit_action">@color/strokes_default</color>
